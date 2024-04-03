@@ -1,0 +1,285 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: RentalService
+  labels:
+    app: RentalService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: RentalService
+  template:
+    metadata:
+      labels:
+        app: RentalService
+    spec:
+      containers:
+        - name: RentalService
+          image: username/RentalService:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ReviewService
+  labels:
+    app: ReviewService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ReviewService
+  template:
+    metadata:
+      labels:
+        app: ReviewService
+    spec:
+      containers:
+        - name: ReviewService
+          image: username/ReviewService:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: BookService
+  labels:
+    app: BookService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: BookService
+  template:
+    metadata:
+      labels:
+        app: BookService
+    spec:
+      containers:
+        - name: BookService
+          image: username/BookService:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: PointService
+  labels:
+    app: PointService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: PointService
+  template:
+    metadata:
+      labels:
+        app: PointService
+    spec:
+      containers:
+        - name: PointService
+          image: username/PointService:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: UserService
+  labels:
+    app: UserService
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: UserService
+  template:
+    metadata:
+      labels:
+        app: UserService
+    spec:
+      containers:
+        - name: UserService
+          image: username/UserService:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: RentalService
+  labels:
+    app: RentalService
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: RentalService
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ReviewService
+  labels:
+    app: ReviewService
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: ReviewService
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: BookService
+  labels:
+    app: BookService
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: BookService
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: PointService
+  labels:
+    app: PointService
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: PointService
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: UserService
+  labels:
+    app: UserService
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: UserService
+
