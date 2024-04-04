@@ -14,7 +14,7 @@ public interface PointSystemService {
         path = "/pointSystems/{id}/decreasepoint"
     )
     public void decreasePoint(
-        @PathVariable("id") Long id,
+        @PathVariable("id") String userId,
         @RequestBody DecreasePointCommand decreasePointCommand
     );
 }

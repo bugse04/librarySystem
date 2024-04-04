@@ -16,11 +16,8 @@ public class PointSystem {
 
     private Integer point;
 
-    private String userId;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String userId;
 
     @PostUpdate
     public void onPostUpdate() {

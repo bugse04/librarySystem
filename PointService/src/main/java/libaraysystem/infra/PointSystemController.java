@@ -26,7 +26,7 @@ public class PointSystemController {
         produces = "application/json;charset=UTF-8"
     )
     public PointSystem decreasePoint(
-        @PathVariable(value = "id") Long id,
+        @PathVariable(value = "id") String id,
         @RequestBody DecreasePointCommand decreasePointCommand,
         HttpServletRequest request,
         HttpServletResponse response

@@ -11,9 +11,8 @@ import lombok.*;
 @ToString
 public class PointDecreased extends AbstractEvent {
 
-    private Long id;
-    private Integer point;
     private String userId;
+    private Integer point;
 
     public PointDecreased(PointSystem aggregate) {
         super(aggregate);
