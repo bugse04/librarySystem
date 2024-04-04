@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class DecreasePointCommand {
 
-    private Integer point;
+    private String userId;
 }
