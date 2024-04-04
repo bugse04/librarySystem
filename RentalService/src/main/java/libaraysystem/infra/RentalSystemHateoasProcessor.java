@@ -13,6 +13,9 @@ public class RentalSystemHateoasProcessor
     @Override
     public EntityModel<RentalSystem> process(EntityModel<RentalSystem> model) {
         model.add(
+            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+        );
+        model.add(
             Link
                 .of(model.getRequiredLink("self").getHref() + "/returnbook")
                 .withRel("returnbook")

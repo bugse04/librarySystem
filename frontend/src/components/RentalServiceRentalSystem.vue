@@ -38,7 +38,7 @@
                     text
                     @click="save"
                 >
-                    RentBook
+                저장
                 </v-btn>
                 <v-btn
                     color="primary"
@@ -60,6 +60,20 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="openRentBook"
+            >
+                RentBook
+            </v-btn>
+            <v-dialog v-model="rentBookDiagram" width="500">
+                <RentBookCommand
+                    @closeDialog="closeRentBook"
+                    @rentBook="rentBook"
+                ></RentBookCommand>
+            </v-dialog>
             <v-btn
                 v-if="!editMode"
                 color="primary"
@@ -111,6 +125,7 @@
                 timeout: 5000,
                 text: '',
             },
+            rentBookDiagram: false,
             returnBookDiagram: false,
         }),
 	async created() {
@@ -209,6 +224,27 @@
             change(){
                 this.$emit('input', this.value);
             },
+            async rentBook() {
+                try {
+                    if(!this.offline){
+                        var temp = await axios.post(axios.fixUrl(this.value._links[''].href))
+                        for(var k in temp.data) this.value[k]=temp.data[k];
+                    }
+
+                    this.editMode = false;
+                    
+                    this.$emit('input', this.value);
+                    this.$emit('delete', this.value);
+                
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
             async returnBook(params) {
                 try {
                     if(!this.offline) {
@@ -234,25 +270,6 @@
             },
             closeReturnBook() {
                 this.returnBookDiagram = false;
-            },
-            async () {
-                try {
-                    if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
-                        for(var k in temp.data) {
-                            this.value[k]=temp.data[k];
-                        }
-                    }
-
-                    this.editMode = false;
-                } catch(e) {
-                    this.snackbar.status = true
-                    if(e.response && e.response.data.message) {
-                        this.snackbar.text = e.response.data.message
-                    } else {
-                        this.snackbar.text = e
-                    }
-                }
             },
         },
     }
