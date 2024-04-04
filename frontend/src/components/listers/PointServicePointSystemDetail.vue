@@ -11,6 +11,9 @@
             <div>
                 <String label="UserId" v-model="item.userId" :editMode="editMode" @change="change" />
             </div>
+            <div>
+                <String label="BookId" v-model="item.bookId" :editMode="editMode" @change="change" />
+            </div>
         </v-card-text>
 
         <v-card-actions>

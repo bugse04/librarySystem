@@ -19,6 +19,8 @@ public class PointSystem {
     @Id
     private String userId;
 
+    private String bookId;
+
     @PostUpdate
     public void onPostUpdate() {
         PointIncreased pointIncreased = new PointIncreased(this);

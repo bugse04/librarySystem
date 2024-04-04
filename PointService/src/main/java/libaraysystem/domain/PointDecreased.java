@@ -13,6 +13,7 @@ public class PointDecreased extends AbstractEvent {
 
     private String userId;
     private Integer point;
+    private String bookId;
 
     public PointDecreased(PointSystem aggregate) {
         super(aggregate);

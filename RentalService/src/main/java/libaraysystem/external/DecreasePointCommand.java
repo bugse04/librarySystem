@@ -10,4 +10,6 @@ public class DecreasePointCommand {
 
     @Id
     private String userId;
+
+    private String bookId;
 }

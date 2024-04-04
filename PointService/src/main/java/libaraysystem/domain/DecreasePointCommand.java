@@ -8,4 +8,5 @@ import lombok.Data;
 public class DecreasePointCommand {
 
     private String userId;
+    private String bookId;
 }
