@@ -18,7 +18,12 @@ public class PointSystem {
     private Integer point;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String userId;
+
+    private Long bookId;
+
+    private Long rentId;
 
     @PostUpdate
     public void onPostUpdate() {

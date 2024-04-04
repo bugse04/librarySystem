@@ -48,6 +48,7 @@ public class DashBoardViewHandler {
             );
             for (DashBoard dashBoard : dashBoardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
+                dashBoard.setPoint(pointIncreased.getPoint());
                 // view 레파지 토리에 save
                 dashBoardRepository.save(dashBoard);
             }
