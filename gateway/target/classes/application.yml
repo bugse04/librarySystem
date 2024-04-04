@@ -25,7 +25,7 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=/pointSystems/**, 
-        - id: UserService
+        - id: UserService
           uri: http://localhost:8086
           predicates:
             - Path=, 
@@ -69,7 +69,7 @@ spring:
           uri: http://pointService:8080
           predicates:
             - Path=/pointSystems/**, 
-        - id: UserService
+        - id: UserService
           uri: http://userService:8080
           predicates:
             - Path=, 

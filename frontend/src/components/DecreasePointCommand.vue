@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <String label="UserId" v-model="value.userId" :editMode="editMode"/>
+            <Number label="Point" v-model="value.point" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -41,7 +41,7 @@
             value: {},
         }),
         created() {
-            this.value.userId = '';
+            this.value.point = 0;
         },
         watch: {
         },

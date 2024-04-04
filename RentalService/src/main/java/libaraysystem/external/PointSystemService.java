@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(name = "PointService", url = "${api.url.PointService}")
 public interface PointSystemService {
-    @RequestMapping(method = RequestMethod.POST, path = "/pointSystems/{id}")
+    @RequestMapping(
+        method = RequestMethod.PUT,
+        path = "/pointSystems/{id}/decreasepoint"
+    )
     public void decreasePoint(
         @PathVariable("id") Long id,
         @RequestBody DecreasePointCommand decreasePointCommand

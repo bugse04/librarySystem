@@ -24,7 +24,7 @@ See the README.md files inside the each microservices directory:
 - ReviewService
 - BookService
 - PointService
-- UserService
+- UserService
 
 
 ## Run API Gateway (Spring Gateway)
@@ -50,7 +50,7 @@ mvn spring-boot:run
 ```
  http :8088/pointSystems id="id" point="point" userId="userId" 
 ```
-- UserService
+- UserService
 ```
 ```
 

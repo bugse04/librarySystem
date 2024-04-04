@@ -33,7 +33,7 @@ jobs:
           mvn clean package -f ./ReviewService/pom.xml
           mvn clean package -f ./BookService/pom.xml
           mvn clean package -f ./PointService/pom.xml
-          mvn clean package -f ./UserService/pom.xml
+          mvn clean package -f ./UserService/pom.xml
 
       - name: Docker Build and push for RentalService
         uses: docker/build-push-action@v4
@@ -78,10 +78,10 @@ jobs:
       - name: Docker Build and push for UserService
         uses: docker/build-push-action@v4
         with:
-          context: ./UserService
+          context: ./UserService
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/userservice:latest
-            ghcr.io/${{ github.repository }}/userservice:${{ github.ref_name }}
+            ghcr.io/${{ github.repository }}/userservice:latest
+            ghcr.io/${{ github.repository }}/userservice:${{ github.ref_name }}
             

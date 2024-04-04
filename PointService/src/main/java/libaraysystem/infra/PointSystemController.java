@@ -21,17 +21,25 @@ public class PointSystemController {
     PointSystemRepository pointSystemRepository;
 
     @RequestMapping(
-        value = "pointSystems/",
-        method = RequestMethod.POST,
+        value = "pointSystems/{id}/decreasepoint",
+        method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )
     public PointSystem decreasePoint(
+        @PathVariable(value = "id") Long id,
+        @RequestBody DecreasePointCommand decreasePointCommand,
         HttpServletRequest request,
-        HttpServletResponse response,
-        @RequestBody PointSystem pointSystem
+        HttpServletResponse response
     ) throws Exception {
         System.out.println("##### /pointSystem/decreasePoint  called #####");
-        pointSystem.decreasePoint(decreasePointcommand);
+        Optional<PointSystem> optionalPointSystem = pointSystemRepository.findById(
+            id
+        );
+
+        optionalPointSystem.orElseThrow(() -> new Exception("No Entity Found"));
+        PointSystem pointSystem = optionalPointSystem.get();
+        pointSystem.decreasePoint(decreasePointCommand);
+
         pointSystemRepository.save(pointSystem);
         return pointSystem;
     }

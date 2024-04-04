@@ -13,7 +13,9 @@ public class PointSystemHateoasProcessor
     @Override
     public EntityModel<PointSystem> process(EntityModel<PointSystem> model) {
         model.add(
-            Link.of(model.getRequiredLink("self").getHref() + "/").withRel("")
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/decreasepoint")
+                .withRel("decreasepoint")
         );
 
         return model;

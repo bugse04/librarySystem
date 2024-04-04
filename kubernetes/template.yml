@@ -163,22 +163,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: UserService
+  name: UserService
   labels:
-    app: UserService
+    app: UserService
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: UserService
+      app: UserService
   template:
     metadata:
       labels:
-        app: UserService
+        app: UserService
     spec:
       containers:
-        - name: UserService
-          image: username/UserService:latest
+        - name: UserService
+          image: username/UserService:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -273,13 +273,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: UserService
+  name: UserService
   labels:
-    app: UserService
+    app: UserService
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: UserService
+    app: UserService
 
