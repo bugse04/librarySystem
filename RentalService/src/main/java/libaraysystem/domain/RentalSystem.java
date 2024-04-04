@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import libaraysystem.RentalServiceApplication;
+import libaraysystem.domain.BookRented;
 import libaraysystem.domain.RentalCanceled;
 import lombok.Data;
 
@@ -26,6 +27,18 @@ public class RentalSystem {
 
     @PostPersist
     public void onPostPersist() {
+        //Following code causes dependency to external APIs
+        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+
+        libaraysystem.external.DecreasePointCommand decreasePointCommand = new libaraysystem.external.DecreasePointCommand();
+        // mappings goes here
+        RentalServiceApplication.applicationContext
+            .getBean(libaraysystem.external.PointSystemService.class)
+            .decreasePoint(/* get???(), */decreasePointCommand);
+
+        BookRented bookRented = new BookRented(this);
+        bookRented.publishAfterCommit();
+
         RentalCanceled rentalCanceled = new RentalCanceled(this);
         rentalCanceled.publishAfterCommit();
     }
@@ -37,24 +50,6 @@ public class RentalSystem {
         return rentalSystemRepository;
     }
 
-    //<<< Clean Arch / Port Method
-    public void rentBook(RentBookCommand rentBookCommand) {
-        //implement business logic here:
-
-        BookRented bookRented = new BookRented(this);
-        bookRented.publishAfterCommit();
-
-        //Following code causes dependency to external APIs
-        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
-
-        libaraysystem.external.PointSystem pointSystem = new libaraysystem.external.PointSystem();
-        // mappings goes here
-        RentalServiceApplication.applicationContext
-            .getBean(libaraysystem.external.PointSystemService.class)
-            .decreasePoint(pointSystem);
-    }
-
-    //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public void returnBook(ReturnBookCommand returnBookCommand) {
         //implement business logic here:

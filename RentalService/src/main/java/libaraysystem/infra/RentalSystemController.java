@@ -21,22 +21,6 @@ public class RentalSystemController {
     RentalSystemRepository rentalSystemRepository;
 
     @RequestMapping(
-        value = "rentalSystems/",
-        method = RequestMethod.POST,
-        produces = "application/json;charset=UTF-8"
-    )
-    public RentalSystem rentBook(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        @RequestBody RentalSystem rentalSystem
-    ) throws Exception {
-        System.out.println("##### /rentalSystem/rentBook  called #####");
-        rentalSystem.rentBook(rentBookcommand);
-        rentalSystemRepository.save(rentalSystem);
-        return rentalSystem;
-    }
-
-    @RequestMapping(
         value = "rentalSystems/{id}/returnbook",
         method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
