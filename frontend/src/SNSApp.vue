@@ -72,13 +72,13 @@
 
                     <v-list-item
                         class="px-2"
-                        key=""
-                        to="//"
+                        key="pointSystems"
+                        to="/pointServices/pointSystems"
                         @click="changeUrl()"
                         color="primary"
                         style="font-weight:700;"
                     >
-                        
+                        PointSystem
                     </v-list-item>
 
 
@@ -183,10 +183,10 @@ export default {
                 ImageUrl: '',
             },
             { 
-                title: '', 
+                title: 'PointSystem', 
                 description: '', 
-                key: '', 
-                route: '//',
+                key: 'pointSystems', 
+                route: '/pointServices/pointSystems',
                 ImageUrl: '',
             },
             

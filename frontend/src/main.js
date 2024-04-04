@@ -51,7 +51,7 @@ pluralCaseList.push( {plural: "reviewServices/reviewSystems", pascal: "ReviewSer
 
 pluralCaseList.push( {plural: "bookServices/bookSystems", pascal: "BookServiceBookSystem"} )
 
-pluralCaseList.push( {plural: "/", pascal: ""} )
+pluralCaseList.push( {plural: "pointServices/pointSystems", pascal: "PointServicePointSystem"} )
 
 
 

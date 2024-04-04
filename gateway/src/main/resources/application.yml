@@ -24,9 +24,9 @@ spring:
         - id: PointService
           uri: http://localhost:8085
           predicates:
-            - Path=/undefined/**, 
+            - Path=/pointSystems/**, 
         - id: UserService
-          uri: http://localhost:0
+          uri: http://localhost:8086
           predicates:
             - Path=, 
         - id: frontend
@@ -68,7 +68,7 @@ spring:
         - id: PointService
           uri: http://pointService:8080
           predicates:
-            - Path=/undefined/**, 
+            - Path=/pointSystems/**, 
         - id: UserService
           uri: http://userService:8080
           predicates:

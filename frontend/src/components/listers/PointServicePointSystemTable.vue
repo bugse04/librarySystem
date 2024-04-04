@@ -31,7 +31,7 @@
                         </v-fab-transition>
                     </template>
 
-                    <ReviewServiceReviewSystem :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
+                    <PointServicePointSystem :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" @add="append" v-if="tick"/>
                 
                     <v-btn
                             style="postition:absolute; top:2%; right:2%"
@@ -50,12 +50,12 @@
 
 <script>
     const axios = require('axios').default;
-    import ReviewServiceReviewSystem from './../ReviewServiceReviewSystem.vue';
+    import PointServicePointSystem from './../PointServicePointSystem.vue';
 
     export default {
-        name: 'ReviewServiceReviewSystemManager',
+        name: 'PointServicePointSystemManager',
         components: {
-            ReviewServiceReviewSystem,
+            PointServicePointSystem,
         },
         props: {
             offline: Boolean,
@@ -66,12 +66,11 @@
             values: [],
             headers: 
                 [
-                    { text: "reviewId", value: "reviewId" },
-                    { text: "reviewConts", value: "reviewConts" },
-                    { text: "createDate", value: "createDate" },
+                    { text: "id", value: "id" },
+                    { text: "point", value: "point" },
                     { text: "userId", value: "userId" },
                 ],
-            reviewSystem : [],
+            pointSystem : [],
             newValue: {},
             tick : true,
             openDialog : false,
@@ -82,14 +81,12 @@
                 return;
             }
 
-            var temp = await axios.get(axios.fixUrl('/reviewsystems'))
-            temp.data._embedded.reviewsystems.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
-            this.values = temp.data._embedded.reviewsystems;
+            var temp = await axios.get(axios.fixUrl('/pointsystems'))
+            temp.data._embedded.pointsystems.map(obj => obj.id=obj._links.self.href.split("/")[obj._links.self.href.split("/").length - 1])
+            this.values = temp.data._embedded.pointsystems;
 
             this.newValue = {
-                'reviewId': 0,
-                'reviewConts': '',
-                'createDate': '2024-04-04',
+                'point': 0,
                 'userId': '',
             }
         },

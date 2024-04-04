@@ -14,8 +14,8 @@ import ReviewServiceReviewSystemDetail from "./components/listers/ReviewServiceR
 import BookServiceBookSystemManager from "./components/listers/BookServiceBookSystemCards"
 import BookServiceBookSystemDetail from "./components/listers/BookServiceBookSystemDetail"
 
-import Manager from "./components/listers/Cards"
-import Detail from "./components/listers/Detail"
+import PointServicePointSystemManager from "./components/listers/PointServicePointSystemCards"
+import PointServicePointSystemDetail from "./components/listers/PointServicePointSystemDetail"
 
 
 
@@ -57,14 +57,14 @@ export default new Router({
             },
 
             {
-                path: '//',
-                name: 'Manager',
-                component: Manager
+                path: '/pointServices/pointSystems',
+                name: 'PointServicePointSystemManager',
+                component: PointServicePointSystemManager
             },
             {
-                path: '///:id',
-                name: 'Detail',
-                component: Detail
+                path: '/pointServices/pointSystems/:id',
+                name: 'PointServicePointSystemDetail',
+                component: PointServicePointSystemDetail
             },
 
 

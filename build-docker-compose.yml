@@ -87,7 +87,7 @@ services:
       - SPRING_PROFILES_ACTIVE=docker
     command: mvn spring-boot:run
     ports:
-      - 0:0
+      - 8086:8086
     working_dir: /usr/src
     volumes:
       - ./UserService:/usr/src

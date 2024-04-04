@@ -13,7 +13,7 @@
                         class="border-color"
                     >
                     </v-list-item-avatar>
-                    <h1 class="align-self-center ml-3">ReviewSystem</h1>
+                    <h1 class="align-self-center ml-3">PointSystem</h1>
                     <div class="secondary-text-color" style="margin-left:30px;"></div>
                 </v-list-item>
             </v-row>
@@ -27,7 +27,7 @@
                         hide-overlay
                         transition="dialog-bottom-transition"
                 >
-                    <ReviewServiceReviewSystem :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
+                    <PointServicePointSystem :offline="offline" class="video-card" :isNew="true" :editMode="true" v-model="newValue" 
                             @add="append" v-if="tick"/>
 
                     <v-btn
@@ -66,7 +66,7 @@
                                 color="primary"
                                 style="font-weight:500; font-size:20px; padding:15px; border:solid 2px; max-width:250px; overflow:hidden"
                             >
-                                ReviewSystem 등록
+                                PointSystem 등록
                             </v-btn>
                         </v-card-actions>
                     </v-card>
@@ -74,7 +74,7 @@
             </div>
         </v-col>
         <v-row>
-            <ReviewServiceReviewSystem :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
+            <PointServicePointSystem :offline="offline" class="video-card" v-for="(value, index) in values" v-model="values[index]" v-bind:key="index" @delete="remove"/>
         </v-row>
     </div>
 </template>
@@ -82,12 +82,12 @@
 <script>
 
     const axios = require('axios').default;
-    import ReviewServiceReviewSystem from './../ReviewServiceReviewSystem.vue';
+    import PointServicePointSystem from './../PointServicePointSystem.vue';
 
     export default {
-        name: 'ReviewServiceReviewSystemManager',
+        name: 'PointServicePointSystemManager',
         components: {
-            ReviewServiceReviewSystem,
+            PointServicePointSystem,
         },
         props: {
             offline: Boolean
@@ -105,13 +105,11 @@
                 return;
             } 
 
-            var temp = await axios.get(axios.fixUrl('/reviewSystems'))
-            me.values = temp.data._embedded.reviewSystems;
+            var temp = await axios.get(axios.fixUrl('/pointSystems'))
+            me.values = temp.data._embedded.pointSystems;
             
             me.newValue = {
-                'reviewId': 0,
-                'reviewConts': '',
-                'createDate': '2024-04-04',
+                'point': 0,
                 'userId': '',
             }
         },
