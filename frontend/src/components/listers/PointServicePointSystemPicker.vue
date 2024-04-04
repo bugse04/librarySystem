@@ -20,12 +20,6 @@
                             <v-list-item-subtitle>
                                 UserId :  {{item.userId }}
                             </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                RentId :  {{item.rentId }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                BookId :  {{item.bookId }}
-                            </v-list-item-subtitle>
                         </v-list-item-content>
 
                         <v-list-item-action>
@@ -79,10 +73,6 @@
                     
                     
                     obj['userId'] = arr[4]; 
-                    
-                    
-                    
-                    
                     
                     this.$emit('selected', obj);
                 }

@@ -11,11 +11,11 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MyPageViewHandler {
+public class DashBoardViewHandler {
 
     //<<< DDD / CQRS
     @Autowired
-    private MyPageRepository myPageRepository;
+    private DashBoardRepository dashBoardRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whenBookRented_then_CREATE_1(@Payload BookRented bookRented) {
@@ -23,13 +23,13 @@ public class MyPageViewHandler {
             if (!bookRented.validate()) return;
 
             // view 객체 생성
-            MyPage myPage = new MyPage();
+            DashBoard dashBoard = new DashBoard();
             // view 객체에 이벤트의 Value 를 set 함
-            myPage.setRentId(bookRented.getRentId());
-            myPage.setUserId(bookRented.getUserId());
-            myPage.setBookTitle(bookRented.getBookTitle());
+            dashBoard.setRentId(bookRented.getRentId());
+            dashBoard.setUserId(bookRented.getUserId());
+            dashBoard.setBookId(bookRented.getBookId());
             // view 레파지 토리에 save
-            myPageRepository.save(myPage);
+            dashBoardRepository.save(dashBoard);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -43,13 +43,13 @@ public class MyPageViewHandler {
             if (!pointIncreased.validate()) return;
             // view 객체 조회
 
-            List<MyPage> myPageList = myPageRepository.findByUserId(
+            List<DashBoard> dashBoardList = dashBoardRepository.findByUserId(
                 pointIncreased.getUserId()
             );
-            for (MyPage myPage : myPageList) {
+            for (DashBoard dashBoard : dashBoardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 // view 레파지 토리에 save
-                myPageRepository.save(myPage);
+                dashBoardRepository.save(dashBoard);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -64,14 +64,14 @@ public class MyPageViewHandler {
             if (!pointDecreased.validate()) return;
             // view 객체 조회
 
-            List<MyPage> myPageList = myPageRepository.findByUserId(
+            List<DashBoard> dashBoardList = dashBoardRepository.findByUserId(
                 pointDecreased.getUserId()
             );
-            for (MyPage myPage : myPageList) {
+            for (DashBoard dashBoard : dashBoardList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
-                myPage.setPoint(pointDecreased.getPoint());
+                dashBoard.setPoint(pointDecreased.getPoint());
                 // view 레파지 토리에 save
-                myPageRepository.save(myPage);
+                dashBoardRepository.save(dashBoard);
             }
         } catch (Exception e) {
             e.printStackTrace();

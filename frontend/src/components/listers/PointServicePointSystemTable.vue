@@ -68,8 +68,6 @@
                 [
                     { text: "point", value: "point" },
                     { text: "userId", value: "userId" },
-                    { text: "rentId", value: "rentId" },
-                    { text: "bookId", value: "bookId" },
                 ],
             pointSystem : [],
             newValue: {},
@@ -89,8 +87,6 @@
             this.newValue = {
                 'point': 0,
                 'userId': '',
-                'rentId': 0,
-                'bookId': 0,
             }
         },
         methods: {

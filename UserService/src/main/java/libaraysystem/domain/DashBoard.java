@@ -8,9 +8,9 @@ import lombok.Data;
 
 //<<< EDA / CQRS
 @Entity
-@Table(name = "MyPage_table")
+@Table(name = "DashBoard_table")
 @Data
-public class MyPage {
+public class DashBoard {
 
     @Id
     //@GeneratedValue(strategy=GenerationType.AUTO)
@@ -18,5 +18,5 @@ public class MyPage {
 
     private String userId;
     private Integer point;
-    private String bookTitle;
+    private Long bookId;
 }
