@@ -20,16 +20,13 @@ public class PointSystem {
     @Id
     private String userId;
 
-    @PostPersist
-    public void onPostPersist() {
-        PointDecreased pointDecreased = new PointDecreased(this);
-        pointDecreased.publishAfterCommit();
-    }
-
     @PostUpdate
     public void onPostUpdate() {
         PointIncreased pointIncreased = new PointIncreased(this);
         pointIncreased.publishAfterCommit();
+
+        PointDecreased pointDecreased = new PointDecreased(this);
+        pointDecreased.publishAfterCommit();
     }
 
     public static PointSystemRepository repository() {
