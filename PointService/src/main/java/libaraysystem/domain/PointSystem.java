@@ -100,8 +100,6 @@ public class PointSystem {
         PointSystem pointSystem = new PointSystem();
         repository().save(pointSystem);
 
-        PointDecreased pointDecreased = new PointDecreased(pointSystem);
-        pointDecreased.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -111,8 +109,6 @@ public class PointSystem {
             pointSystem // do something
             repository().save(pointSystem);
 
-            PointDecreased pointDecreased = new PointDecreased(pointSystem);
-            pointDecreased.publishAfterCommit();
 
          });
         */

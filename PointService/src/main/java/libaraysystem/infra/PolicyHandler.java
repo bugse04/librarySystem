@@ -54,5 +54,21 @@ public class PolicyHandler {
         // Sample Logic //
         PointSystem.increasePoint(event);
     }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='BookRented'"
+    )
+    public void wheneverBookRented_DecreasePoint(
+        @Payload BookRented bookRented
+    ) {
+        BookRented event = bookRented;
+        System.out.println(
+            "\n\n##### listener DecreasePoint : " + bookRented + "\n\n"
+        );
+
+        // Sample Logic //
+        PointSystem.decreasePoint(event);
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
