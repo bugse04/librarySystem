@@ -26,12 +26,6 @@ public class BookSystem {
 
     private String bookWriter;
 
-    @PostPersist
-    public void onPostPersist() {
-        OutOfBookStock outOfBookStock = new OutOfBookStock(this);
-        outOfBookStock.publishAfterCommit();
-    }
-
     @PostUpdate
     public void onPostUpdate() {
         BookStockDecreased bookStockDecreased = new BookStockDecreased(this);
@@ -39,6 +33,9 @@ public class BookSystem {
 
         BookStockIncreased bookStockIncreased = new BookStockIncreased(this);
         bookStockIncreased.publishAfterCommit();
+
+        OutOfBookStock outOfBookStock = new OutOfBookStock(this);
+        outOfBookStock.publishAfterCommit();
     }
 
     public static BookSystemRepository repository() {
