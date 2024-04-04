@@ -10,4 +10,4 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
     path = "pointSystems"
 )
 public interface PointSystemRepository
-    extends PagingAndSortingRepository<PointSystem, String> {}
+    extends PagingAndSortingRepository<PointSystem, Long> {}

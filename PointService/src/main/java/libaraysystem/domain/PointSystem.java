@@ -16,8 +16,11 @@ public class PointSystem {
 
     private Integer point;
 
-    @Id
     private String userId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @PostUpdate
     public void onPostUpdate() {
@@ -36,7 +39,7 @@ public class PointSystem {
     }
 
     //<<< Clean Arch / Port Method
-    public void decreasePoint() {
+    public void decreasePoint(DecreasePointCommand decreasePointCommand) {
         //implement business logic here:
 
         PointDecreased pointDecreased = new PointDecreased(this);

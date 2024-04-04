@@ -26,7 +26,8 @@ public class PointSystemController {
         produces = "application/json;charset=UTF-8"
     )
     public PointSystem decreasePoint(
-        @PathVariable(value = "id") String id,
+        @PathVariable(value = "id") Long id,
+        @RequestBody DecreasePointCommand decreasePointCommand,
         HttpServletRequest request,
         HttpServletResponse response
     ) throws Exception {
@@ -37,7 +38,7 @@ public class PointSystemController {
 
         optionalPointSystem.orElseThrow(() -> new Exception("No Entity Found"));
         PointSystem pointSystem = optionalPointSystem.get();
-        pointSystem.decreasePoint();
+        pointSystem.decreasePoint(decreasePointCommand);
 
         pointSystemRepository.save(pointSystem);
         return pointSystem;

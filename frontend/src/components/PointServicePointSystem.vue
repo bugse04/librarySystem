@@ -17,7 +17,7 @@
 
         <v-card-text>
             <Number label="Point" v-model="value.point" :editMode="editMode" :inputUI="''"/>
-            <String v-if="editMode" label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
+            <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>
@@ -62,10 +62,16 @@
                 v-if="!editMode"
                 color="primary"
                 text
-                @click="decreasePoint"
+                @click="openDecreasePoint"
             >
                 DecreasePoint
             </v-btn>
+            <v-dialog v-model="decreasePointDiagram" width="500">
+                <DecreasePointCommand
+                    @closeDialog="closeDecreasePoint"
+                    @decreasePoint="decreasePoint"
+                ></DecreasePointCommand>
+            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -103,6 +109,7 @@
                 timeout: 5000,
                 text: '',
             },
+            decreasePointDiagram: false,
         }),
 	async created() {
         },
@@ -200,16 +207,17 @@
             change(){
                 this.$emit('input', this.value);
             },
-            async decreasePoint() {
+            async decreasePoint(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['decreasepoint'].href))
+                        var temp = await axios.put(axios.fixUrl(this.value._links['decreasepoint'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
                     }
 
                     this.editMode = false;
+                    this.closeDecreasePoint();
                 } catch(e) {
                     this.snackbar.status = true
                     if(e.response && e.response.data.message) {
@@ -218,6 +226,12 @@
                         this.snackbar.text = e
                     }
                 }
+            },
+            openDecreasePoint() {
+                this.decreasePointDiagram = true;
+            },
+            closeDecreasePoint() {
+                this.decreasePointDiagram = false;
             },
         },
     }

@@ -72,7 +72,9 @@
                     var arr = this.list[val]._links.self.href.split('/');
                     
                     
-                    obj['userId'] = arr[4]; 
+                    
+                    
+                    obj['id'] = arr[4]; 
                     
                     this.$emit('selected', obj);
                 }

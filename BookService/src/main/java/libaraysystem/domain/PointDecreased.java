@@ -9,6 +9,7 @@ import lombok.*;
 @ToString
 public class PointDecreased extends AbstractEvent {
 
-    private String userId;
+    private Long id;
     private Integer point;
+    private String userId;
 }

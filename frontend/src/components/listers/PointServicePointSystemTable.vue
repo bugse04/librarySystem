@@ -68,6 +68,7 @@
                 [
                     { text: "point", value: "point" },
                     { text: "userId", value: "userId" },
+                    { text: "id", value: "id" },
                 ],
             pointSystem : [],
             newValue: {},
