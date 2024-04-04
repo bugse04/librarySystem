@@ -27,7 +27,7 @@ public class MyPageViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             myPage.setRentId(bookRented.getRentId());
             myPage.setUserId(bookRented.getUserId());
-            myPage.setBookTitle(bookRented.getBookTitle());
+            myPage.setBookId(bookRented.getBookId());
             // view 레파지 토리에 save
             myPageRepository.save(myPage);
         } catch (Exception e) {

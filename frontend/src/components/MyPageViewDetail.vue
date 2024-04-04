@@ -16,7 +16,7 @@
                 <Number label="Point" v-model="item.point" :editMode="editMode" @change="change" />
             </div>
             <div>
-                <String label="BookTitle" v-model="item.bookTitle" :editMode="editMode" @change="change" />
+                <Number label="BookId" v-model="item.bookId" :editMode="editMode" @change="change" />
             </div>
         </v-card-text>
     </v-card>

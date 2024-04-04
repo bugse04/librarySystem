@@ -18,5 +18,5 @@ public class MyPage {
 
     private String userId;
     private Integer point;
-    private String bookTitle;
+    private Long bookId;
 }

@@ -24,7 +24,7 @@
                 { text: "rentId", value: "rentId" },
                 { text: "userId", value: "userId" },
                 { text: "point", value: "point" },
-                { text: "bookTitle", value: "bookTitle" },
+                { text: "bookId", value: "bookId" },
             ],
             myPage : [],
         }),
