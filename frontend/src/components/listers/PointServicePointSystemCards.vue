@@ -111,6 +111,7 @@
             me.newValue = {
                 'point': 0,
                 'userId': '',
+                'bookId': 0,
             }
         },
         methods:{
