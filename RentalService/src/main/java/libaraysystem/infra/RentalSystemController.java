@@ -19,5 +19,37 @@ public class RentalSystemController {
 
     @Autowired
     RentalSystemRepository rentalSystemRepository;
+
+    @RequestMapping(
+        value = "rentalSystems/",
+        method = RequestMethod.POST,
+        produces = "application/json;charset=UTF-8"
+    )
+    public RentalSystem rentBook(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        @RequestBody RentalSystem rentalSystem
+    ) throws Exception {
+        System.out.println("##### /rentalSystem/rentBook  called #####");
+        rentalSystem.rentBook(rentBookcommand);
+        rentalSystemRepository.save(rentalSystem);
+        return rentalSystem;
+    }
+
+    @RequestMapping(
+        value = "rentalSystems/",
+        method = RequestMethod.POST,
+        produces = "application/json;charset=UTF-8"
+    )
+    public RentalSystem returnBook(
+        HttpServletRequest request,
+        HttpServletResponse response,
+        @RequestBody RentalSystem rentalSystem
+    ) throws Exception {
+        System.out.println("##### /rentalSystem/returnBook  called #####");
+        rentalSystem.returnBook(returnBookcommand);
+        rentalSystemRepository.save(rentalSystem);
+        return rentalSystem;
+    }
 }
 //>>> Clean Arch / Inbound Adaptor
