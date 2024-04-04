@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 public class PointSystem {
 
-    private Integer point;
+    private Long id;
     private String userId;
+    private Integer point;
 }

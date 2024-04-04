@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 import libaraysystem.PointServiceApplication;
+import libaraysystem.domain.PointDecreased;
 import libaraysystem.domain.PointIncreased;
 import lombok.Data;
 
@@ -19,14 +20,17 @@ public class PointSystem {
     @Id
     private String userId;
 
+    @PostPersist
+    public void onPostPersist() {
+        PointDecreased pointDecreased = new PointDecreased(this);
+        pointDecreased.publishAfterCommit();
+    }
+
     @PostUpdate
     public void onPostUpdate() {
         PointIncreased pointIncreased = new PointIncreased(this);
         pointIncreased.publishAfterCommit();
     }
-
-    @PreUpdate
-    public void onPreUpdate() {}
 
     public static PointSystemRepository repository() {
         PointSystemRepository pointSystemRepository = PointServiceApplication.applicationContext.getBean(
@@ -34,16 +38,6 @@ public class PointSystem {
         );
         return pointSystemRepository;
     }
-
-    //<<< Clean Arch / Port Method
-    public void decreasePoint(DecreasePointCommand decreasePointCommand) {
-        //implement business logic here:
-
-        PointDecreased pointDecreased = new PointDecreased(this);
-        pointDecreased.publishAfterCommit();
-    }
-
-    //>>> Clean Arch / Port Method
 
     //<<< Clean Arch / Port Method
     public static void increasePoint(ReviewRegistered reviewRegistered) {
@@ -94,6 +88,34 @@ public class PointSystem {
 
             PointIncreased pointIncreased = new PointIncreased(pointSystem);
             pointIncreased.publishAfterCommit();
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public static void decreasePoint(BookRented bookRented) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        PointSystem pointSystem = new PointSystem();
+        repository().save(pointSystem);
+
+        PointDecreased pointDecreased = new PointDecreased(pointSystem);
+        pointDecreased.publishAfterCommit();
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(bookRented.get???()).ifPresent(pointSystem->{
+            
+            pointSystem // do something
+            repository().save(pointSystem);
+
+            PointDecreased pointDecreased = new PointDecreased(pointSystem);
+            pointDecreased.publishAfterCommit();
 
          });
         */

@@ -58,20 +58,6 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn
-                v-if="!editMode"
-                color="primary"
-                text
-                @click="openDecreasePoint"
-            >
-                DecreasePoint
-            </v-btn>
-            <v-dialog v-model="decreasePointDiagram" width="500">
-                <DecreasePointCommand
-                    @closeDialog="closeDecreasePoint"
-                    @decreasePoint="decreasePoint"
-                ></DecreasePointCommand>
-            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -109,7 +95,6 @@
                 timeout: 5000,
                 text: '',
             },
-            decreasePointDiagram: false,
         }),
 	async created() {
         },
@@ -207,17 +192,16 @@
             change(){
                 this.$emit('input', this.value);
             },
-            async decreasePoint(params) {
+            async () {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['decreasepoint'].href), params)
+                        var temp = await axios.put(axios.fixUrl(this.value._links[''].href))
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
                     }
 
                     this.editMode = false;
-                    this.closeDecreasePoint();
                 } catch(e) {
                     this.snackbar.status = true
                     if(e.response && e.response.data.message) {
@@ -226,12 +210,6 @@
                         this.snackbar.text = e
                     }
                 }
-            },
-            openDecreasePoint() {
-                this.decreasePointDiagram = true;
-            },
-            closeDecreasePoint() {
-                this.decreasePointDiagram = false;
             },
         },
     }

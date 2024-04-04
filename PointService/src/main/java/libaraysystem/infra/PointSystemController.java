@@ -19,29 +19,5 @@ public class PointSystemController {
 
     @Autowired
     PointSystemRepository pointSystemRepository;
-
-    @RequestMapping(
-        value = "pointSystems/{id}/decreasepoint",
-        method = RequestMethod.PUT,
-        produces = "application/json;charset=UTF-8"
-    )
-    public PointSystem decreasePoint(
-        @PathVariable(value = "id") String id,
-        @RequestBody DecreasePointCommand decreasePointCommand,
-        HttpServletRequest request,
-        HttpServletResponse response
-    ) throws Exception {
-        System.out.println("##### /pointSystem/decreasePoint  called #####");
-        Optional<PointSystem> optionalPointSystem = pointSystemRepository.findById(
-            id
-        );
-
-        optionalPointSystem.orElseThrow(() -> new Exception("No Entity Found"));
-        PointSystem pointSystem = optionalPointSystem.get();
-        pointSystem.decreasePoint(decreasePointCommand);
-
-        pointSystemRepository.save(pointSystem);
-        return pointSystem;
-    }
 }
 //>>> Clean Arch / Inbound Adaptor

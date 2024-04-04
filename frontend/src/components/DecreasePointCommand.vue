@@ -6,8 +6,6 @@
 
         <v-card-text>
             <String label="UserId" v-model="value.userId" :editMode="editMode"/>
-            <Number label="BookId" v-model="value.bookId" :editMode="editMode"/>
-            <Number label="RentId" v-model="value.rentId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -44,8 +42,6 @@
         }),
         created() {
             this.value.userId = '';
-            this.value.bookId = 0;
-            this.value.rentId = 0;
         },
         watch: {
         },

@@ -8,9 +8,5 @@ import lombok.Data;
 @Data
 public class DecreasePointCommand {
 
-    @Id
     private String userId;
-
-    private Long bookId;
-    private Long rentId;
 }
