@@ -21,33 +21,26 @@ public class RentalSystemController {
     RentalSystemRepository rentalSystemRepository;
 
     @RequestMapping(
-        value = "rentalSystems/",
-        method = RequestMethod.POST,
-        produces = "application/json;charset=UTF-8"
-    )
-    public RentalSystem rentBook(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        @RequestBody RentalSystem rentalSystem
-    ) throws Exception {
-        System.out.println("##### /rentalSystem/rentBook  called #####");
-        rentalSystem.rentBook(rentBookcommand);
-        rentalSystemRepository.save(rentalSystem);
-        return rentalSystem;
-    }
-
-    @RequestMapping(
-        value = "rentalSystems/",
-        method = RequestMethod.POST,
+        value = "rentalSystems/{id}/returnbook",
+        method = RequestMethod.PUT,
         produces = "application/json;charset=UTF-8"
     )
     public RentalSystem returnBook(
+        @PathVariable(value = "id") Long id,
+        @RequestBody ReturnBookCommand returnBookCommand,
         HttpServletRequest request,
-        HttpServletResponse response,
-        @RequestBody RentalSystem rentalSystem
+        HttpServletResponse response
     ) throws Exception {
         System.out.println("##### /rentalSystem/returnBook  called #####");
-        rentalSystem.returnBook(returnBookcommand);
+        Optional<RentalSystem> optionalRentalSystem = rentalSystemRepository.findById(
+            id
+        );
+
+        optionalRentalSystem.orElseThrow(() -> new Exception("No Entity Found")
+        );
+        RentalSystem rentalSystem = optionalRentalSystem.get();
+        rentalSystem.returnBook(returnBookCommand);
+
         rentalSystemRepository.save(rentalSystem);
         return rentalSystem;
     }

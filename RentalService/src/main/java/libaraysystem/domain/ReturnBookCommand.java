@@ -9,4 +9,5 @@ public class ReturnBookCommand {
 
     private String userId;
     private Long bookId;
+    private Long rentId;
 }
