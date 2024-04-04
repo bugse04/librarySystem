@@ -25,6 +25,22 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='BookReturned'"
+    )
+    public void wheneverBookReturned_IncreaseBookStock(
+        @Payload BookReturned bookReturned
+    ) {
+        BookReturned event = bookReturned;
+        System.out.println(
+            "\n\n##### listener IncreaseBookStock : " + bookReturned + "\n\n"
+        );
+
+        // Sample Logic //
+        BookSystem.increaseBookStock(event);
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
         condition = "headers['type']=='PointDecreased'"
     )
     public void wheneverPointDecreased_DecreaseBookStock(
