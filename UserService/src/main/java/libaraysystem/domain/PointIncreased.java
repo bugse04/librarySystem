@@ -10,4 +10,6 @@ public class PointIncreased extends AbstractEvent {
 
     private String userId;
     private Integer point;
+    private Long rentId;
+    private Long bookId;
 }
