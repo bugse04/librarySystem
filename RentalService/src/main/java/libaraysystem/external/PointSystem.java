@@ -8,5 +8,5 @@ public class PointSystem {
 
     private Integer point;
     private String userId;
-    private String bookId;
+    private Long bookId;
 }

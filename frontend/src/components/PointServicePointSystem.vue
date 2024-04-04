@@ -18,7 +18,7 @@
         <v-card-text>
             <Number label="Point" v-model="value.point" :editMode="editMode" :inputUI="''"/>
             <String v-if="editMode" label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
-            <String label="BookId" v-model="value.bookId" :editMode="editMode" :inputUI="''"/>
+            <Number label="BookId" v-model="value.bookId" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions>

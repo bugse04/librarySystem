@@ -11,5 +11,5 @@ public class PointDecreased extends AbstractEvent {
 
     private String userId;
     private Integer point;
-    private String bookId;
+    private Long bookId;
 }

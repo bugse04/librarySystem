@@ -6,7 +6,7 @@
 
         <v-card-text>
             <String label="UserId" v-model="value.userId" :editMode="editMode"/>
-            <String label="BookId" v-model="value.bookId" :editMode="editMode"/>
+            <Number label="BookId" v-model="value.bookId" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
@@ -43,7 +43,7 @@
         }),
         created() {
             this.value.userId = '';
-            this.value.bookId = '';
+            this.value.bookId = 0;
         },
         watch: {
         },

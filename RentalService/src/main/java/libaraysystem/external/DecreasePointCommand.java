@@ -11,5 +11,5 @@ public class DecreasePointCommand {
     @Id
     private String userId;
 
-    private String bookId;
+    private Long bookId;
 }

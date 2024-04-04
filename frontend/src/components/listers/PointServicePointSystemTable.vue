@@ -88,7 +88,7 @@
             this.newValue = {
                 'point': 0,
                 'userId': '',
-                'bookId': '',
+                'bookId': 0,
             }
         },
         methods: {
