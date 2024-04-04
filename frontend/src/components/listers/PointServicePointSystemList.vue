@@ -42,13 +42,11 @@
                         <v-list-item-title style="margin-bottom:10px;">
                             
                             
-                            
                         </v-list-item-title>
 
                         <v-list-item-subtitle style="font-size:25px; font-weight:700;">
                             [ Point :  {{data.point }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ BookId :  {{data.bookId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -118,7 +116,6 @@
             this.newValue = {
                 'point': 0,
                 'userId': '',
-                'bookId': 0,
             }
         },
         methods: {

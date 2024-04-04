@@ -48,7 +48,7 @@ mvn spring-boot:run
 ```
 - PointService
 ```
- http :8088/pointSystems point="point" userId="userId" bookId="bookId" 
+ http :8088/pointSystems point="point" userId="userId" 
 ```
 - UserService
 ```
