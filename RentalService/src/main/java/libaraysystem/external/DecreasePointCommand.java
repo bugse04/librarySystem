@@ -12,4 +12,5 @@ public class DecreasePointCommand {
     private String userId;
 
     private Long bookId;
+    private Long rentId;
 }

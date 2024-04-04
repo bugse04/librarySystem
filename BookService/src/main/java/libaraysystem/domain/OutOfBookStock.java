@@ -12,7 +12,6 @@ import lombok.*;
 public class OutOfBookStock extends AbstractEvent {
 
     private Long bookId;
-    private Integer bookStock;
     private Long rentId;
 
     public OutOfBookStock(BookSystem aggregate) {
