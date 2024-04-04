@@ -14,12 +14,9 @@ import lombok.Data;
 //<<< DDD / Aggregate Root
 public class PointSystem {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private Integer point;
 
+    @Id
     private String userId;
 
     @PostUpdate
@@ -39,7 +36,7 @@ public class PointSystem {
     }
 
     //<<< Clean Arch / Port Method
-    public void decreasePoint(DecreasePointCommand decreasePointCommand) {
+    public void decreasePoint() {
         //implement business logic here:
 
         PointDecreased pointDecreased = new PointDecreased(this);

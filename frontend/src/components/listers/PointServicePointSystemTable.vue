@@ -66,7 +66,6 @@
             values: [],
             headers: 
                 [
-                    { text: "id", value: "id" },
                     { text: "point", value: "point" },
                     { text: "userId", value: "userId" },
                 ],

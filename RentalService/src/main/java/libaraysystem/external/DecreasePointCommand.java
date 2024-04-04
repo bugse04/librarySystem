@@ -6,7 +6,4 @@ import javax.persistence.*;
 import lombok.Data;
 
 @Data
-public class DecreasePointCommand {
-
-    private String userId;
-}
+public class DecreasePointCommand {}

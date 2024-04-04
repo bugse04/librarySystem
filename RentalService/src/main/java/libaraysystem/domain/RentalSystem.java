@@ -30,12 +30,6 @@ public class RentalSystem {
         //Following code causes dependency to external APIs
         // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
 
-        libaraysystem.external.DecreasePointCommand decreasePointCommand = new libaraysystem.external.DecreasePointCommand();
-        // mappings goes here
-        RentalServiceApplication.applicationContext
-            .getBean(libaraysystem.external.PointSystemService.class)
-            .decreasePoint(/* get???(), */decreasePointCommand);
-
         BookRented bookRented = new BookRented(this);
         bookRented.publishAfterCommit();
 
