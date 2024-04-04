@@ -74,7 +74,7 @@ public class PointSystem {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public static void increasePoint(RentalCanceled rentalCanceled) {
+    public static void increasePoint(OutOfBookStock outOfBookStock) {
         //implement business logic here:
 
         /** Example 1:  new item 
@@ -87,7 +87,7 @@ public class PointSystem {
 
         /** Example 2:  finding and process
         
-        repository().findById(rentalCanceled.get???()).ifPresent(pointSystem->{
+        repository().findById(outOfBookStock.get???()).ifPresent(pointSystem->{
             
             pointSystem // do something
             repository().save(pointSystem);

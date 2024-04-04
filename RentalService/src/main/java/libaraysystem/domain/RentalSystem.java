@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.*;
 import libaraysystem.RentalServiceApplication;
 import libaraysystem.domain.BookRented;
-import libaraysystem.domain.RentalCanceled;
 import lombok.Data;
 
 @Entity
@@ -38,9 +37,6 @@ public class RentalSystem {
 
         BookRented bookRented = new BookRented(this);
         bookRented.publishAfterCommit();
-
-        RentalCanceled rentalCanceled = new RentalCanceled(this);
-        rentalCanceled.publishAfterCommit();
     }
 
     public static RentalSystemRepository repository() {

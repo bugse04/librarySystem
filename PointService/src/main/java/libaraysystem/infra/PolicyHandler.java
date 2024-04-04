@@ -41,14 +41,14 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='RentalCanceled'"
+        condition = "headers['type']=='OutOfBookStock'"
     )
-    public void wheneverRentalCanceled_IncreasePoint(
-        @Payload RentalCanceled rentalCanceled
+    public void wheneverOutOfBookStock_IncreasePoint(
+        @Payload OutOfBookStock outOfBookStock
     ) {
-        RentalCanceled event = rentalCanceled;
+        OutOfBookStock event = outOfBookStock;
         System.out.println(
-            "\n\n##### listener IncreasePoint : " + rentalCanceled + "\n\n"
+            "\n\n##### listener IncreasePoint : " + outOfBookStock + "\n\n"
         );
 
         // Sample Logic //
